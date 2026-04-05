@@ -1,27 +1,25 @@
-import { Suspense } from 'react'
-import './app.css'
-import Navbar from './assets/Components/Navbar/Navbar'
-import Players from './assets/Components/Navbar/Players/Players'
-import Banner from './assets/HomePage/Banner/Banner'
+import { Suspense } from "react";
+import Banner from "./Components/Banner/Banner";
+import Navbar from "./Components/Navbar/Navbar";
+import Players from "./Components/Navbar/Players/Players";
 
 const fetchPlayers = async () => {
-  const res = await fetch("/data.json")
-  return res.json()
-}
+  const res = await fetch("/data.json");
+  return res.json();
+};
 
-export function App() {
-
-  const playersPromise = fetchPlayers()
+const App = () => {
+  const playersPromise = fetchPlayers();
 
   return (
     <>
       <Navbar></Navbar>
       <Banner></Banner>
-      <Suspense fallback={<span className="loading loading-spinner loading-xl"></span>
-      }> <Players playersPromise={playersPromise}></Players></Suspense>
-
-
-
+      <Suspense fallback={<div>Loading...</div>}>
+        <Players playersPromise={playersPromise}></Players>
+      </Suspense>
     </>
-  )
-}
+  );
+};
+
+export default App;
