@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "name": "Hashim Amla",
+    "image": "https://i.ibb.co.com/1fqyCD8d/South-Africas-Hashim-Amlacelebratesreachinghistriplecentury-e1565278161349.jpg",
+    "country": "South Africa",
+    "role": "Batsman",
+    "rating": 95,
+    "batting_style": "Right-Hand-Bat",
+    "bowling_style": "Right-arm off break",
+    "price": 18000000,
+    "is_selected": false,
+    "description": "Known for his long sunnah beard and incredible discipline on the field."
+  },
+  {
+    "id": 2,
+    "name": "Mohammad Rizwan",
+    "image": "https://example.com/images/rizwan.jpg",
+    "country": "Pakistan",
+    "role": "Wicketkeeper Batter",
+    "rating": 93,
+    "batting_style": "Right-Hand-Bat",
+    "bowling_style": "N/A",
+    "price": 15000000,
+    "is_selected": false,
+    "description": "A deeply religious player who often prays on the field and promotes Islamic values."
+  },
+  {
+    "id": 3,
+    "name": "Moeen Ali",
+    "image": "https://example.com/images/moeen.jpg",
+    "country": "England",
+    "role": "All-Rounder",
+    "rating": 90,
+    "batting_style": "Left-Hand-Bat",
+    "bowling_style": "Right-arm off break",
+    "price": 13000000,
+    "is_selected": false,
+    "description": "Often called 'The Beard that's Feared', he is a proud practicing Muslim."
+  },
+  {
+    "id": 4,
+    "name": "Mohammad Yousuf",
+    "image": "https://example.com/images/yousuf.jpg",
+    "country": "Pakistan",
+    "role": "Batsman",
+    "rating": 94,
+    "batting_style": "Right-Hand-Bat",
+    "bowling_style": "Right-arm off break",
+    "price": 16500000,
+    "is_selected": false,
+    "description": "A legendary cricketer who embraced Islam and maintained a devout lifestyle."
+  },
+  {
+    "id": 5,
+    "name": "Saeed Anwar",
+    "image": "https://example.com/images/anwar.jpg",
+    "country": "Pakistan",
+    "role": "Batsman",
+    "rating": 92,
+    "batting_style": "Left-Hand-Bat",
+    "bowling_style": "Slow left-arm orthodox",
+    "price": 14500000,
+    "is_selected": false,
+    "description": "One of the greatest openers who dedicated his life to Tabligh after retirement."
+  },
+  {
+    "id": 6,
+    "name": "Mahmudullah Riyad",
+    "image": "https://example.com/images/mahmudullah.jpg",
+    "country": "Bangladesh",
+    "role": "All-Rounder",
+    "rating": 88,
+    "batting_style": "Right-Hand-Bat",
+    "bowling_style": "Right-arm off break",
+    "price": 11000000,
+    "is_selected": false,
+    "description": "Known as 'The Silent Killer', he is well-respected for his religious devotion and character."
+  }
+]
