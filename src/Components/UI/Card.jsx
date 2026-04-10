@@ -1,50 +1,76 @@
 
+import { useState } from "react";
 import { FaFlag, FaUser } from "react-icons/fa";
 
 
-const Card = ({player}) => {
+const Card = ({ player, setCoin, coin }) => {
+    const [isSelectd, setIsSelected] = useState(false)
+    const handleChoosePlayers = () => {
+
+
+        let newCoin = coin - player.price
+        if (newCoin >= 0) {
+
+            setCoin(coin - player.price)
+        }
+        else {
+            alert("Not enough to coin this players")
+            return
+        }
+        alert(`${player.name} is Selected`)
+        setIsSelected(true);
+
+
+
+
+    }
     return (
-       
-             <div>
-              <div className="card bg-base-100 shadow-sm">
+
+        <div>
+            <div className="card bg-base-100 shadow-sm">
                 <figure>
-                  <img src={player.image} alt="player" />
+                    <img src={player.image} alt="player" />
                 </figure>
 
                 <div className="card-body">
-                  <h2 className="card-title">
-                    <FaUser /> {player.name}
-                  </h2>
+                    <h2 className="card-title">
+                        <FaUser /> {player.name}
+                    </h2>
 
-                  <div className="flex justify-between gap-2">
-                    <div className="items-center flex gap-2">
-                      <FaFlag />
-                      <p>{player.country}</p>
+                    <div className="flex justify-between gap-2">
+                        <div className="items-center flex gap-2">
+                            <FaFlag />
+                            <p>{player.country}</p>
+                        </div>
+                        <button className="btn">{player.role}</button>
                     </div>
-                    <button className="btn">{player.role}</button>
-                  </div>
 
-                  <div className="divider"></div>
+                    <div className="divider"></div>
 
-                  <h2 className="font-bold">
-                    Rating : ({player.rating})
-                  </h2>
+                    <h2 className="font-bold">
+                        Rating : ({player.rating})
+                    </h2>
 
-                  <div className="font-bold flex justify-between gap-4">
-                    <p>{player.batting_style}</p>
-                    <p className="text-right">{player.bowling_style}</p>
-                  </div>
+                    <div className="font-bold flex justify-between gap-4">
+                        <p>{player.batting_style}</p>
+                        <p className="text-right">{player.bowling_style}</p>
+                    </div>
 
-                  <div className="items-center card-actions justify-between">
-                    <p className="font-semibold">
-                      Price : ${player.price}
-                    </p>
-                    <button className="btn">Choose Players</button>
-                  </div>
+                    <div className="items-center card-actions justify-between">
+                        <p className="font-semibold">
+                            Price : ${player.price}
+                        </p>
+
+                        <button
+                            onClick={() => handleChoosePlayers()}
+                            disabled={isSelectd}
+
+                            className="btn">{isSelectd === true ? "Selectd" : "Choose Players"}</button>
+                    </div>
                 </div>
-              </div>
             </div>
-     
+        </div>
+
     );
 };
 

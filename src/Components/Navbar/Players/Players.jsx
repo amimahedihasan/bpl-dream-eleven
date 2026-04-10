@@ -1,7 +1,8 @@
 import { use, useState } from "react";
 import AvailabalePlayers from "../../AvalabalePlayers/AvailabalePlayers";
+import SelectedPlayers from "../../SelectedPlayers/SelectedPlayers";
 
-const Players = ({ playersPromise }) => {
+const Players = ({ playersPromise, setCoin, coin }) => {
   const players = use(playersPromise);
   const [selectedType ,setSelectedType] = useState("available")
   console.log(selectedType)
@@ -16,7 +17,8 @@ const Players = ({ playersPromise }) => {
     <div className=" container mx-auto my-[60px] ">
 
       <div className="flex justify-between gap-4 items-center " >
-        <h2 className='font-bold text-3xl'>Available Players</h2>
+
+        {selectedType === "available"? <h2 className='font-bold text-3xl'>Available Players</h2>: <h2 className='font-bold text-3xl'>Seleted Players</h2>}
 
         <div className="">
 
@@ -32,14 +34,7 @@ const Players = ({ playersPromise }) => {
         </div>
       </div>
 
-
-
-
-
-
-
-
-      <AvailabalePlayers players={players}></AvailabalePlayers>
+      {selectedType === "available" ?<AvailabalePlayers players={players} setCoin={setCoin} coin={coin} ></AvailabalePlayers> : <SelectedPlayers></SelectedPlayers>}
     </div>
   );
 };
