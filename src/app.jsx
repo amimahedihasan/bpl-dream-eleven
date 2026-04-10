@@ -15,7 +15,8 @@ const App = () => {
     <>
       <Navbar></Navbar>
       <Banner></Banner>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<span className="loading loading-ring loading-xl"></span>
+      }>
         <Players playersPromise={playersPromise}></Players>
       </Suspense>
     </>
