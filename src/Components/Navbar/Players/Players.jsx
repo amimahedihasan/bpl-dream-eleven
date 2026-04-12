@@ -4,38 +4,63 @@ import SelectedPlayers from "../../SelectedPlayers/SelectedPlayers";
 
 const Players = ({ playersPromise, setCoin, coin }) => {
   const players = use(playersPromise);
-  const [selectedType ,setSelectedType] = useState("available")
-  const [selectedPlayers,setSelectedPlayers] =useState([])
-  console.log(selectedType)
+  const [selectedType, setSelectedType] = useState("available"); // Initial state
+  const [selectedPlayers, setSelectedPlayers] = useState([]);
 
-
-
-
-
+  // Player delete functionality
+  const handleDelete = (id) => {
+    const remainingPlayers = selectedPlayers.filter((p) => p.playerId !== id);
+    setSelectedPlayers(remainingPlayers);
+  };
 
   return (
+    <div className="container mx-auto my-[60px] px-4">
+      {/* Header with Toggle Buttons */}
+      <div className="flex justify-between gap-4 items-center mb-10">
+        <div className="flex-1">
+          {selectedType === "available" ? (
+            <h2 className="font-bold text-3xl">Available Players</h2>
+          ) : (
+            <h2 className="font-bold text-3xl">Selected Players ({selectedPlayers.length}/6)</h2>
+          )}
+        </div>
 
-    <div className=" container mx-auto my-[60px] ">
-
-      <div className="flex justify-between gap-4 items-center " >
-
-        {selectedType === "available"? <h2 className='font-bold text-3xl'>Available Players</h2>: <h2 className='font-bold text-3xl'>Seleted Players ({selectedPlayers.length}/6)</h2>}
-
-        <div className="">
-
+        <div className="flex border rounded-xl overflow-hidden shadow-sm">
           <button
-          onClick={()=>setSelectedType("available")}
-          className={`btn ${selectedType === "available" ? "bg-[#E7FE29]" : ""} rounded-r-none rounded-l-xl btn `}>Available</button>
-
+            onClick={() => setSelectedType("available")}
+            className={`px-8 py-3 font-bold transition-all ${
+              selectedType === "available" ? "bg-[#E7FE29] text-black" : "bg-white text-gray-500 hover:bg-gray-50"
+            }`}
+          >
+            Available
+          </button>
           <button
-          onClick={()=>setSelectedType("seleted")}
-           className={`btn ${selectedType === "seleted" ? "bg-[#E7FE29]" : ""} rounded-l-none rounded-r-xl btn `}>Seleted({selectedPlayers.length})</button>
-
-        
+            onClick={() => setSelectedType("seleted")} // Fixed typo "seleted" to match your state logic
+            className={`px-8 py-3 font-bold transition-all ${
+              selectedType === "seleted" ? "bg-[#E7FE29] text-black" : "bg-white text-gray-500 hover:bg-gray-50"
+            }`}
+          >
+            Selected ({selectedPlayers.length})
+          </button>
         </div>
       </div>
 
-      {selectedType === "available" ?<AvailabalePlayers players={players} setCoin={setCoin} coin={coin} selectedPlayers={selectedPlayers}  setSelectedPlayers={setSelectedPlayers}></AvailabalePlayers> : <SelectedPlayers selectedPlayers={selectedPlayers}></SelectedPlayers>}
+      {/* Toggle View Condition */}
+      {selectedType === "available" ? (
+        <AvailabalePlayers
+          players={players}
+          setCoin={setCoin}
+          coin={coin}
+          selectedPlayers={selectedPlayers}
+          setSelectedPlayers={setSelectedPlayers}
+        />
+      ) : (
+        <SelectedPlayers
+          selectedPlayers={selectedPlayers}
+          handleDelete={handleDelete}
+          setSelectedType={setSelectedType}
+        />
+      )}
     </div>
   );
 };
